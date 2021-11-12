@@ -7,8 +7,8 @@ services:
     ports:
       - ${PROXY_PORT}:8080
     volumes:
-      - ./backend:/usr/src/artway
-      - backend_static_django:/usr/src/artway/static_django
+      - ./backend:/usr/src/project
+      - backend_static_django:/usr/src/project/static_django
     depends_on:
       - backend
       - frontend
@@ -21,8 +21,8 @@ services:
     build:
       context: ./backend
     volumes:
-      - ./backend/media/:/usr/src/artway/media/
-      - backend_static_django:/usr/src/artway/static_django/
+      - ./backend/media/:/usr/src/project/media/
+      - backend_static_django:/usr/src/project/static_django/
     environment:
       BACKEND_DEBUG_MODE: ${BACKEND_DEBUG_MODE}
       BACKEND_SECRET_KEY: ${BACKEND_SECRET_KEY}
