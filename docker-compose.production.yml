@@ -7,7 +7,7 @@ services:
       - ${PROXY_PORT}:8080
     volumes:
 #      - ./backend:/usr/src/project
-      - backend_static_django:/usr/src/project/static_django
+      - backend_static_django:/usr/src/project/static_django/
     depends_on:
       - backend
       - frontend
@@ -40,14 +40,6 @@ services:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
-  ml:
-    image: wildhack_ml
-    environment:
-      - BACKEND_DEBUG_MODE=${ML_DEBUG_MODE}
-      - BACKEND_SECRET_KEY=${ML_SECRET_KEY}
-      - BACKEND_ALLOWED_HOSTS=${ML_ALLOWED_HOSTS}
-    depends_on:
-      - backend
 volumes:
   backend_static_django:
   postgres_data:
