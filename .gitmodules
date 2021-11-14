@@ -7,6 +7,3 @@
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/Zayac11/WildHack-2021-RealityX-Frontend
-[submodule "ml"]
-	path = ml
-	url = https://github.com/AlexGeniusMan/WildHack-2021-RealityX-ML
