@@ -3,20 +3,15 @@ version: '3.7'
 services:
   proxy:
     image: wildhack_proxy
-    ports:
-      - ${PROXY_PORT}:8080
-    volumes:
-#      - ./backend:/usr/src/project
-      - backend_static_django:/usr/src/project/static_django/
     depends_on:
-      - backend
       - frontend
+    ports:
+      - 8001:8080
   frontend:
     image: wildhack_frontend
   backend:
     image: wildhack_backend
     volumes:
-#      - ./backend/media/:/usr/src/project/media/
       - backend_static_django:/usr/src/project/static_django/
     environment:
       BACKEND_DEBUG_MODE: ${BACKEND_DEBUG_MODE}
@@ -30,6 +25,8 @@ services:
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "8002:8080"
     depends_on:
       - db
   db:
